@@ -18,7 +18,7 @@ export class CandidateService {
     formData.append("candidate", JSON.stringify(body))
     formData.append("file",file)
 
-    return new Observable<any>((observer) => { this.http.post("http://localhost:8080/api/v1/candidate/save/candidate", formData).subscribe(candidate => { observer.next(candidate); observer.complete(); }); });
+    return this.http.post("http://localhost:8080/api/v1/candidate/save/candidate", formData);
   }
 
   upload(file:any):Observable<any>{

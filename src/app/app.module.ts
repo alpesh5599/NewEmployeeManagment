@@ -27,6 +27,7 @@ import { MatTabsModule } from "@angular/material/tabs";
 import { DashboardComponent } from './timesheet/dashboard/dashboard.component';
 import { DatePipe } from '@angular/common';
 import { DateAdapter, NativeDateAdapter } from '@angular/material/core';
+import { NgxBootstrapSnackbarModule } from '@tech-pro/ngx-bootstrap-snackbar';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DateAdapter, NativeDateAdapter } from '@angular/material/core';
     MatButtonModule,
     MatSnackBarModule,
     MatTabsModule,
+    NgxBootstrapSnackbarModule.forRoot(),
   ],
   providers: [
     {

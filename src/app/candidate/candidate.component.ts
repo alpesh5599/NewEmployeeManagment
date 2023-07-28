@@ -1,12 +1,17 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
-import { FormControl, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CandidateService } from '../services/candidate.service';
-import { HttpResponse, HttpStatusCode } from '@angular/common/http';
 import { CandidateModel } from '../CandidateModel';
-import { CandidatewithFile } from '../CandidatewithFile';
 import { CandidateStatus } from '../candidateStatus';
+import { CandidateService } from '../services/candidate.service';
+import {
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+  NgxBootstrapSnackbarService,
+} from '@tech-pro/ngx-bootstrap-snackbar';
+import { NotificationService } from '../notification.service';
+
 
 @Component({
   selector: 'app-candidate',
@@ -15,10 +20,13 @@ import { CandidateStatus } from '../candidateStatus';
 })
 export class CandidateComponent implements OnInit {
 
+  title: string = "";
+  response: string = "";
+  
   candidateForm: any = FormGroup;
   editForm: any = FormGroup;
 
-  file!: Blob;
+  selectedFile: any = null;
   candidate = new CandidateModel();
   candidates: any = [];
 
@@ -31,12 +39,14 @@ export class CandidateComponent implements OnInit {
   status: any;
   keys = Object.keys;
 
-  constructor(private candidateService: CandidateService, private router: Router,) {
+  
+
+  constructor(private candidateService: CandidateService, private router: Router,private notoficationUtils:NotificationService) {
     // this.convertByteArrayToFile()
   }
 
   ngOnInit(): void {
-    // this.status = Object.keys(CandidateStatus);
+    this.title = "Add Candidate Details";
 
     this.candidateForm = new FormGroup({
       position: new FormControl('', [Validators.required]),
@@ -96,32 +106,33 @@ export class CandidateComponent implements OnInit {
       this.candidate.contact = formValue.contact;
       this.candidate.skills = formValue.skills;
       this.candidate.joining = formValue.joining;
-      this.candidate.fileName = this.file.name;
       this.candidate.comments = formValue.comments;
+      if(this.selectedFile){
+        this.candidate.fileName = this.selectedFile.name;
+      }
     }
 
-    this.candidateService.saveCandidateData(this.candidate, this.file).subscribe((res: HttpResponse<any>) => {
-    })
-
-    this.showmsg = true;
+    this.candidateService.saveCandidateData(this.candidate, this.selectedFile).subscribe(
+      (response: any) => {
+        console.log(response)
+        this.notoficationUtils.success(response.response);
+      },
+      (error: any) => {
+        this.notoficationUtils.error(error.error);
+      }
+    );
+    // if(resp){
+      
+    // }
   }
-
-  // fileData:any;
-
-  // convertByteArrayToFile() {
-  //   const blob = new Blob([this.candidates.fileData], { type: 'application/pdf' });
-  //   this.fileData = URL.createObjectURL(blob);
-  //   console.log(this.fileData);
-
-  // }
 
   showmsg: boolean = false;
   showmsg1: boolean = false;
   onFileChange(event: any) {
-    const a = event.target.files[0];
+    const file = event.target.files[0];
 
-    if (a) {
-      this.file = a;
+    if (file) {
+      this.selectedFile = file;
     }
   }
 
@@ -146,7 +157,6 @@ export class CandidateComponent implements OnInit {
   edit(data: any) {
     this.candidateService.candidateupdateData = data;
 
-    // This is setting for now....
     data.fileData = "";
     this.editForm.patchValue(data);
   }
@@ -162,24 +172,20 @@ export class CandidateComponent implements OnInit {
   updateCandidate() {
     var editId = this.candidateService.candidateupdateData.id;
 
-    this.candidateService.editCandidateData(editId, this.editForm.value, this.file).subscribe(res => {
+    this.candidateService.editCandidateData(editId, this.editForm.value, this.selectedFile).subscribe(res => {
       if (res.HttpStatusCode == 200) {
         this.showmsg = true;
       } else {
         this.showmsg1 = true;
       }
     });
-
-
   }
 
   sendtointrvw(candidate: any) {
     if(candidate){
       this.candidateService.sharedData = candidate;
-      console.log("1 => "+JSON.stringify(this.candidateService.sharedData))
     }else{
       this.candidateService.sharedData = this.candidates;
-      console.log("2 =>"+JSON.stringify(this.candidateService.sharedData))
     }
     this.router.navigate(['setInterview']);
   }
