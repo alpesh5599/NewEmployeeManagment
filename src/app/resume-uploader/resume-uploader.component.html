@@ -1,0 +1,8 @@
+<div class="container">
+    <form [formGroup]="resume">
+        <div class="mt-3">
+            <input class="form-control" formControlName="myFile" type="file" name="myFile"
+                (change)="onFileChange($event); openSnackBar()">
+        </div>
+    </form>
+</div>

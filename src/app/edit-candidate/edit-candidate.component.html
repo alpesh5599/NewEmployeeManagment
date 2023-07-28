@@ -1,0 +1,112 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Edit Candidate Details</span>
+        </div>
+
+        <button mat-icon-button color="primary" [matMenuTriggerFor]="myMenu">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <mat-menu #myMenu="matMenu" xPosition="before" yPosition="below">
+            <a mat-menu-item routerLink="/candidate">Fill up Candidate Details</a>
+            <a mat-menu-item routerLink="/getCandidate">Show All Candidate Details</a>
+            <a mat-menu-item routerLink="/setInterview">Schedule Interview</a>
+            <a mat-menu-item routerLink="/getInterviewDetails">Show scheduled Interview</a>
+
+        </mat-menu>
+    </nav> -->
+
+<div class="container">
+    <form [formGroup]="candidateForm" (ngSubmit)="editCandidate()">
+
+        <div class="mt-3">
+            <select class="form-select" formControlName="applyingPosition">
+                <option selected disabled value="">Choose Position</option>
+                <option>Java Developer</option>
+                <option>Angular Developer</option>
+                <option>Full stack Developer</option>
+            </select>
+        </div>
+
+        <div class="mt-3">
+            <input class="form-control" formControlName="candidateFirstName" type="text" name="firstname"
+                placeholder="Enter First Name">
+            <span *ngIf="this.candidateForm.get('candidateFirstName')?.touched">
+                <span style="color: red;" *ngIf="this.candidateForm.get('candidateFirstName')?.invalid">
+                    <span *ngIf="this.candidateForm.get('candidateFirstName')?.hasError('required')"> *Required </span>
+                </span>
+            </span>
+        </div>
+
+        <div class="mt-3">
+            <input class="form-control" formControlName="candidateLastName" type="text" name="lastname"
+                placeholder="Enter Last Name">
+            <span *ngIf="this.candidateForm.get('candidateLastName')?.touched">
+                <span style="color: red;" *ngIf="this.candidateForm.get('candidateLastName')?.invalid">
+                    <span *ngIf="this.candidateForm.get('candidateLastName')?.hasError('required')"> *Required </span>
+                </span>
+            </span>
+        </div>
+
+        <div class="mt-3">
+            <input class="form-control" formControlName="candidateEmail" type="email" name="email"
+                placeholder="Enter E-mail Address">
+            <span *ngIf="this.candidateForm.get('candidateEmail')?.touched">
+                <span style="color: red;" *ngIf="this.candidateForm.get('candidateEmail')?.invalid">
+                    <span *ngIf="this.candidateForm.get('candidateEmail')?.hasError('required')"> *Required </span>
+                    <span *ngIf="this.candidateForm.get('candidateEmail')?.hasError('email')"> *Email is not
+                        correct</span>
+                </span>
+            </span>
+        </div>
+
+        <div class="mt-3">
+            <input class="form-control" formControlName="candidatePhoneNo" type="number"
+                onKeyPress="if(this.value.length==10) return false; else return true;" name="phoneNo"
+                placeholder="Enter Phone No ">
+            <span *ngIf="this.candidateForm.get('candidatePhoneNo')?.touched">
+                <span style="color: red;" *ngIf="this.candidateForm.get('candidatePhoneNo')?.invalid">
+                    <span *ngIf="this.candidateForm.get('candidatePhoneNo')?.hasError('required')"> *Required </span>
+                </span>
+            </span>
+        </div>
+
+        <div class="mt-3">
+            <input class="form-control" formControlName="candidateSkills" type="text" name="skills"
+                placeholder="Enter your skills">
+            <span *ngIf="this.candidateForm.get('candidateSkills')?.touched">
+                <span style="color: red;" *ngIf="this.candidateForm.get('candidateSkills')?.invalid">
+                    <span *ngIf="this.candidateForm.get('candidateSkills')?.hasError('required')"> *Required </span>
+                </span>
+            </span>
+        </div>
+
+        <!-- <div class="mt-3">
+                <input class="form-control" formControlName="" type="file" name="resume">
+            </div> -->
+
+        <div class="mt-3">
+            <select class="form-select" formControlName="joiningAvailability">
+                <option selected disabled value="">Joining Availability</option>
+                <option>Immediate</option>
+                <option>0-2 weeks</option>
+                <option>2-4 weeks</option>
+                <option>4-6 weeks</option>
+                <option>6-8 weeks</option>
+                <option>8-10 weeks</option>
+                <option>10-12 weeks</option>
+                <option>12-14 weeks</option>
+                <option>14-16 weeks</option>
+            </select>
+        </div>
+
+        <div class="mt-3">
+            <textarea class="form-control" formControlName="comments" name="comments" cols="137" rows="3"
+                placeholder="Enter your comments"></textarea>
+        </div>
+
+        <div class="form-button mt-3">
+            <button id="submit" type="submit" [disabled]="candidateForm.invalid" class="btn btn-dark">Update</button>
+        </div>
+    </form>
+</div>

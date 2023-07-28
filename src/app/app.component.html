@@ -1,0 +1,49 @@
+<app-header *ngIf="!router.url.includes('login')"></app-header>
+
+<!-- <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+    <a mat-tab-link *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive >
+        {{link.label}}
+    </a>
+</nav>
+
+<mat-tab-nav-panel #tabPanel>
+    <router-outlet></router-outlet>
+</mat-tab-nav-panel> -->
+
+
+<div class="card container" style="margin: 1rem 1rem 1rem 1rem; border-width: 0;" *ngIf="!router.url.includes('login')">
+    <div class="card-body">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link " routerLink="/candidate" routerLinkActive="active">Candidate</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/setInterview" routerLinkActive="active">Schedule Interview</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/employee" routerLinkActive="active">Employee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/timesheet-dashboard" routerLinkActive="active">Timesheet
+                    <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="30px" height="30px">
+                        <path
+                            d="M 32 6 C 17.641 6 6 17.641 6 32 C 6 46.359 17.641 58 32 58 C 46.359 58 58 46.359 58 32 C 58 17.641 46.359 6 32 6 z M 32 10 C 44.15 10 54 19.85 
+                                54 32 C 54 44.15 44.15 54 32 54 C 19.85 54 10 44.15 10 32 C 10 19.85 19.85 10 32 10 z M 30.5 14 L 31 18 L 33 18 L 33.5 14 L 30.5 14 z M 44.021484 18.564453
+                                L 33.417969 28.283203 C 33.380125 28.26874 33.345046 28.249684 33.306641 28.236328 C 33.286641 28.226328 33.27 28.212125 33.25 28.203125 C 33.17 28.177125 33.086859 
+                                28.165531 33.005859 28.144531 C 32.909859 28.119531 32.815797 28.090266 32.716797 28.072266 C 32.479797 28.028266 32.241 28.001 32 28 C 29.791 28 28 29.791 28 
+                                32 C 28 34.209 29.791 36 32 36 C 32.242 35.999 32.483656 35.975641 32.722656 35.931641 L 40.816406 42.638672 L 42.640625 40.816406 L 35.931641 32.720703 C 35.969641 
+                                32.514703 35.985234 32.307609 35.990234 32.099609 C 35.991234 32.065609 36 32.034 36 32 C 36 31.962 35.989281 31.926672 35.988281 31.888672 C 35.982281 31.667672 
+                                35.965828 31.448422 35.923828 31.232422 C 35.912828 31.177422 35.893859 31.126266 35.880859 31.072266 C 35.854859 30.964266 35.831875 30.856953 35.796875 30.751953 
+                                C 35.786875 30.735953 35.777578 30.721078 35.767578 30.705078 C 35.753028 30.66285 35.732683 30.623583 35.716797 30.582031 L 45.435547 19.978516 L 44.021484 18.564453 
+                                z M 14 30.5 L 14 33.5 L 18 33 L 18 31 L 14 30.5 z M 50 30.5 L 46 31 L 46 33 L 50 33.5 L 50 30.5 z M 31 46 L 30.5 50 L 33.5 50 L 33 46 L 31 46 z" />
+                    </svg> -->
+                </a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<router-outlet></router-outlet>
+
+<!-- <app-footer *ngIf="!router.url.includes('login')"></app-footer> -->

@@ -1,0 +1,116 @@
+<div class="main-div card container">
+    <div class="card-body">
+        <!-- <h5 class="card-title"
+            style="color: white; border: 1px solid whitesmoke; width: max-content; border-radius: 10px; padding: 10px;">
+            Timesheet - Dashboard </h5> -->
+
+        <form [formGroup]="saveForm" (ngSubmit)="save()">
+            <div style="position: absolute; right: 2rem; top: 1rem;">
+                <button
+                    style="background-color: rgb(198, 245, 111); border-radius: 8px;border: 0px; padding: 5px;">Save</button>
+            </div>
+
+            <div class="mt-5">
+                <table class="table table-borderless">
+
+                    <div class="row">
+                        <thead>
+                            <th style="width: 12rem;">Project Name</th>
+                            <th style="width: 12rem;">Task Name</th>
+                            <!-- <th *ngFor="let day of daysOfWeek">{{day}}</th> -->
+                            <th style="width: 4rem;">{{daysOfWeek[0]}}</th>
+                            <th style="width: 4rem;">{{daysOfWeek[1]}}</th>
+                            <th style="width: 4rem;">{{daysOfWeek[2]}}</th>
+                            <th style="width: 4rem;">{{daysOfWeek[3]}}</th>
+                            <th style="width: 3.9rem;">{{daysOfWeek[4]}}</th>
+                            <th style="width: 4rem;">{{daysOfWeek[5]}}</th>
+                            <th style="width: 4rem;">{{daysOfWeek[6]}}</th>
+                            <th style="width: 4rem;">Total Hours</th>
+                        </thead>
+                    </div>
+                    <div formArrayName="rows" *ngFor="let item of saveForm.get('rows').controls; let i = index;">
+                        <div [formGroupName]="i">
+
+                            <div class="row">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 12rem;">
+                                            <select class="form-select form-control" formControlName="project">
+                                                <option selected disabled value="">-- Select Project --</option>
+                                                <option>Employee Management Portal</option>
+                                                <option>Hospital Management</option>
+                                                <option>Insurance</option>
+                                                <option>Pharmacy Management</option>
+                                            </select>
+                                        </td>
+
+                                        <td style="width: 12rem;">
+                                            <select class="form-select form-control" formControlName="task">
+                                                <option selected disabled value="">-- Select Task --</option>
+                                                <option>Analysis</option>
+                                                <option>Adding Components</option>
+                                                <option>Designing</option>
+                                                <option>Bugs Fixes</option>
+                                            </select>
+                                        </td>
+
+                                        <div formArrayName="hours" *ngFor="let item of getInnerArray(i).controls; let i = index;">
+                                            <div [formGroupName]="i">
+                                                <td><input class="form-control" formControlName="monHours"
+                                                        style="width: 4rem;" type="number">
+                                                </td>
+                                                <td><input class="form-control" formControlName="tueHours"
+                                                        style="width: 4rem;" type="number">
+                                                </td>
+                                                <td><input class="form-control" formControlName="wedHours"
+                                                        style="width: 4rem;" type="number">
+                                                </td>
+                                                <td><input class="form-control" formControlName="thuHours"
+                                                        style="width: 4rem;" type="number">
+                                                </td>
+                                                <td><input class="form-control" formControlName="friHours"
+                                                        style="width: 4rem;" type="number">
+                                                </td>
+                                                <td><input class="form-control" formControlName="satHours"
+                                                        style="width: 4rem;" type="number">
+                                                </td>
+                                                <td><input class="form-control" formControlName="sunHours"
+                                                        style="width: 4rem;" type="number">
+                                                </td>
+                                            </div>
+
+                                        </div>
+
+                                        <td><input class="form-control" formControlName="totalHours"
+                                                style="width: 4rem;" type="number" [value]="sumOfNumericFields"></td>
+                                    </tr>
+
+
+
+                                    <tr *ngIf="saveForm.controls.rows.length === 0">
+                                        <td></td>
+                                        <td></td>
+                                        <td *ngFor="let day of daysOfWeek"></td>
+                                    </tr>
+
+                                </tbody>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-1" (click)="addNew()" style="width: 2rem;">
+                        <svg style="background:none" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 122.88 122.88">
+                            <title>Add row</title>
+                            <path
+                                d="M61.44,0A61.46,61.46,0,1,1,18,18,61.25,61.25,0,0,1,61.44,0ZM88.6,56.82v9.24a4,4,0,0,1-4,4H70V84.62a4,4,0,0,1-4,4H56.82a4,4,0,0,1-4-4V70H38.26a4,4,0,0,1-4-4V56.82a4,4,0,0,1,4-4H52.84V38.26a4,4,0,0,1,4-4h9.24a4,4,0,0,1,4,4V52.84H84.62a4,4,0,0,1,4,4Zm8.83-31.37a50.92,50.92,0,1,0,14.9,36,50.78,50.78,0,0,0-14.9-36Z" />
+                        </svg>
+                    </div>
+
+
+
+                </table>
+            </div>
+        </form>
+
+    </div>
+</div>

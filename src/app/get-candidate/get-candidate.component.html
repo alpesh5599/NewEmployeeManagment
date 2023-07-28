@@ -1,0 +1,46 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">All Candidate Details</span>
+        </div>
+
+        <button mat-icon-button color="primary" [matMenuTriggerFor]="myMenu">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <mat-menu #myMenu="matMenu" xPosition="before" yPosition="below">
+            <a mat-menu-item routerLink="/candidate">Fill up Candidate Details</a>
+            <a mat-menu-item routerLink="/getCandidate">Show All Candidate Details</a>
+            <a mat-menu-item routerLink="/setInterview">Schedule Interview</a>
+            <a mat-menu-item routerLink="/getInterviewDetails">Show scheduled Interview</a>
+
+        </mat-menu>
+    </nav> -->
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <th>ID</th>
+            <th>Applied For</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>PhoneNo</th>
+            <th>Skills</th>
+            <th>Joining Availability</th>
+            <th>Comments</th>
+            <th>Actions</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let candidate of candidates">
+                <td>{{candidate.id}}</td>
+                <td>{{candidate.applyingPosition}}</td>
+                <td>{{candidate.candidateFirstName}} {{candidate.candidateLastName}}</td>
+                <td>{{candidate.candidateEmail}}</td>
+                <td>{{candidate.candidatePhoneNo}}</td>
+                <td>{{candidate.candidateSkills}}</td>
+                <td>{{candidate.joiningAvailability}}</td>
+                <td>{{candidate.comments}}</td>
+                <td><button class="btn btn-outline-dark" (click)="edit(candidate)">Update</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

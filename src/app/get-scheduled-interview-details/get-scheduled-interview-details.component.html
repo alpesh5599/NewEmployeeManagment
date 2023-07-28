@@ -1,0 +1,41 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">All Scheduled Interview Details</span>
+        </div>
+
+        <button mat-icon-button color="primary" [matMenuTriggerFor]="myMenu">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <mat-menu #myMenu="matMenu" xPosition="before" yPosition="below">
+            <a mat-menu-item routerLink="/candidate">Fill up Candidate Details</a>
+            <a mat-menu-item routerLink="/getCandidate">Show All Candidate Details</a>
+            <a mat-menu-item routerLink="/setInterview">Schedule Interview</a>
+            <a mat-menu-item routerLink="/getInterviewDetails">Show scheduled Interview</a>
+
+        </mat-menu>
+    </nav> -->
+
+<div class="container mt-3">
+    <table class="table table-striped">
+        <thead>
+            <th>ID</th>
+            <th>Interviewer Name</th>
+            <th>Interviewer Date & Time</th>
+            <th>Interviewer OutCome</th>
+            <th>Feedback</th>
+            <th>Actions</th>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let i of details">
+                <td>{{i.interviewId}}</td>
+                <td>{{i.interviewerName}}</td>
+                <td>{{i.interviewDateTime|date:'medium'}}</td>
+                <td>{{i.interviewOutCome}}</td>
+                <td>{{i.feedback}}</td>
+                <td><a class="btn btn-outline-secondary" (click)="editDetails(i)">Update</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
