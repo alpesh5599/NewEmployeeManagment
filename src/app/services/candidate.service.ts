@@ -18,7 +18,7 @@ export class CandidateService {
     formData.append("candidate", JSON.stringify(body))
     formData.append("file",file)
 
-    return this.http.post("http://localhost:8080/api/v1/candidate/save/candidate", formData);
+    return this.http.post("http://localhost:8080/candidate/add", formData);
   }
 
   upload(file:any):Observable<any>{
@@ -26,7 +26,7 @@ export class CandidateService {
   }
 
   getAllCandidateData(){
-    return this.http.get("http://localhost:8080/api/v1/candidate/getAll/candidate")
+    return this.http.get("http://localhost:8080/candidate/getAll")
   }
 
   editCandidateData(id:any, body:any, file:Blob):Observable<any>{ 

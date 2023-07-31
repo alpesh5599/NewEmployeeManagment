@@ -112,18 +112,15 @@ export class CandidateComponent implements OnInit {
       }
     }
 
-    this.candidateService.saveCandidateData(this.candidate, this.selectedFile).subscribe(
-      (response: any) => {
-        console.log(response)
-        this.notoficationUtils.success(response.response);
+    this.candidateService.saveCandidateData(this.candidate, this.selectedFile).pipe().subscribe({
+      next: () => {
+        this.notoficationUtils.success("1)")
       },
-      (error: any) => {
-        this.notoficationUtils.error(error.error);
+      error: () => {
+        this.notoficationUtils.error("2) ")
       }
-    );
-    // if(resp){
-      
-    // }
+    })
+
   }
 
   showmsg: boolean = false;
