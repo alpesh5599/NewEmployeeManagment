@@ -27,9 +27,9 @@
                         &nbsp;
                         <input style="display: inline-block; width: 40vh;" class="form-control"
                             formControlName="firstName" type="text" name="firstname" placeholder="Enter First Name">
-                        <span *ngIf="this.candidateForm.get('candidateFirstName')?.touched">
-                            <span style="color: red;" *ngIf="this.candidateForm.get('candidateFirstName')?.invalid">
-                                <span *ngIf="this.candidateForm.get('candidateFirstName')?.hasError('required')">
+                        <span *ngIf="this.candidateForm.get('firstName')?.touched">
+                            <span style="color: red;" *ngIf="this.candidateForm.get('firstName')?.invalid">
+                                <span *ngIf="this.candidateForm.get('firstName')?.hasError('required')">
                                     *Required
                                 </span>
                             </span>

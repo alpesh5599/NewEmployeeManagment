@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, NgxBootstrapSnackbarService } from '@tech-pro/ngx-bootstrap-snackbar';
+import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition, NgxBootstrapSnackbarService, SnackBarConfigModel } from '@tech-pro/ngx-bootstrap-snackbar';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +32,27 @@ export class NotificationService {
 
   error(response:string) {
     this.ngxBootstrapSnackbar.error(response, this.config);
+  }
+
+  default() {
+    this.ngxBootstrapSnackbar.default('I am Default Msg!', this.config);
+  }
+
+  info() {
+    this.ngxBootstrapSnackbar.info('I am Info Msg!', this.config);
+  }
+
+  warn() {
+    this.ngxBootstrapSnackbar.warn('I am Warning Msg!', this.config);
+  }
+
+  close() {
+    this.ngxBootstrapSnackbar.close();
+  }
+
+  custom() {
+    let config: SnackBarConfigModel = this.config;
+    config.panelClass = ['alert', 'alert-custom'];
+    this.ngxBootstrapSnackbar.custom('I am Custom Msg!', config);
   }
 }

@@ -1,4 +1,4 @@
-import { HttpResponse } from '@angular/common/http';
+import { HttpResponse, HttpStatusCode } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -112,15 +112,18 @@ export class CandidateComponent implements OnInit {
       }
     }
 
-    this.candidateService.saveCandidateData(this.candidate, this.selectedFile).pipe().subscribe({
-      next: () => {
-        this.notoficationUtils.success("1)")
-      },
-      error: () => {
-        this.notoficationUtils.error("2) ")
-      }
-    })
+    this.candidateService.saveCandidateData(this.candidate, this.selectedFile).subscribe(
+      
+      // Verified this things... 
 
+      (response: any) => {
+        console.log(response)
+        this.notoficationUtils.success(response.body);
+      },
+      (error: any) => {
+          this.notoficationUtils.error(error.error)
+      }
+    );
   }
 
   showmsg: boolean = false;
