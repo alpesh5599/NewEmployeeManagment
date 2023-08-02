@@ -28,6 +28,7 @@ import { DashboardComponent } from './timesheet/dashboard/dashboard.component';
 import { DatePipe } from '@angular/common';
 import { DateAdapter, NativeDateAdapter } from '@angular/material/core';
 import { NgxBootstrapSnackbarModule } from '@tech-pro/ngx-bootstrap-snackbar';
+import { EnumKeyToValuePipe } from './enum-key-to-value.pipe';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { NgxBootstrapSnackbarModule } from '@tech-pro/ngx-bootstrap-snackbar';
     HeaderComponent,
     FooterComponent,
     DashboardComponent,
+    EnumKeyToValuePipe,
   ],
   imports: [
     BrowserModule,

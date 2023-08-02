@@ -39,7 +39,7 @@ export class HomeComponent {
 
 
   constructor(router: Router) {
-    router.navigate(['/candidate']);
+    router.navigate(['/home/candidates']);
   }
 
 }

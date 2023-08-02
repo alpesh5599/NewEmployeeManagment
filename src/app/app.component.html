@@ -15,13 +15,15 @@
     <div class="card-body">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link " routerLink="/candidate" routerLinkActive="active">Candidate</a>
+                <!-- <a class="nav-link" routerLink="home/candidates" routerLinkActive="active">Candidate</a> -->
+                <a class="nav-link" *ngIf="router.url.includes('home/candidates')" routerLink="home/candidates" routerLinkActive="active">Candidate</a>
+                <a class="nav-link" *ngIf="!router.url.includes('home/candidates')" routerLink="home/candidate" routerLinkActive="active">Candidate</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/setInterview" routerLinkActive="active">Schedule Interview</a>
+                <a class="nav-link" routerLink="home/setInterview" routerLinkActive="active">Schedule Interview</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" routerLink="/employee" routerLinkActive="active">Employee</a>
+                <a class="nav-link" routerLink="home/employee" routerLinkActive="active">Employee</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" routerLink="/timesheet-dashboard" routerLinkActive="active">Timesheet

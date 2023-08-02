@@ -1,9 +1,11 @@
 export enum CandidateStatus {
 
-	ACCEPTED = "Accepted",
-	REJECTED = "rejected",
 	PENDING = "Pending",
-	DISCUSSED = "Discussed",
-	COMPLETED = "Completed",
-	SCHEDULED = "Scheduled"
+	FORMACCEPTED = "Form-Accepted",
+	FORMREJECTED = "Form-Rejected",
+	PENDINGINTERVIEW = "Pending-Interview",
+	INTERVIEWSELECTED = "Interview-Selected",
+	INTERVIEWREJECTED = "Interview-Rejected",
+	JOINED = "Joined"
+	
 }

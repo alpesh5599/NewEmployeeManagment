@@ -10,26 +10,28 @@ import { UpdateInterviewDetailsComponent } from './update-interview-details/upda
 import { EmployeeModuleComponent } from './employee-module/employee-module.component';
 import { ResumeUploaderComponent } from './resume-uploader/resume-uploader.component';
 import { LoginComponent } from './login/login.component';
-import { AppComponent } from './app.component';
 import { DashboardComponent } from './timesheet/dashboard/dashboard.component';
-
+​
 const routes: Routes = [
   { path: "", redirectTo: '/login', pathMatch: 'full' },
   { path: "login", component: LoginComponent },
-  { path: "home", component: HomeComponent },
-  { path: "candidate", component: CandidateComponent },
-  { path: "setInterview", component: SetInterviewComponent },
-  { path: "employee", component: EmployeeModuleComponent },
-  { path: "getCandidate", component: GetCandidateComponent },
+  { path: "home", component: HomeComponent, children:[] },
+  // For Add
+  { path: "home/candidate", component: CandidateComponent },
+  // For Edit 
+  { path: "home/candidate/:id", component:CandidateComponent },
+  { path: "home/setInterview", component: SetInterviewComponent },
+  { path: "home/employee", component: EmployeeModuleComponent },
+  { path: "home/candidates", component: GetCandidateComponent },
   { path: "editCandidate", component: EditCandidateComponent },
   { path: "getInterviewDetails", component: GetScheduledInterviewDetailsComponent },
   { path: "updateInterviewDetails", component: UpdateInterviewDetailsComponent },
   { path: "file", component: ResumeUploaderComponent },
   { path:"timesheet-dashboard", component:DashboardComponent },
   
-
+​
 ];
-
+​
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
