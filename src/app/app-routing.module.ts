@@ -11,6 +11,7 @@ import { EmployeeModuleComponent } from './employee-module/employee-module.compo
 import { ResumeUploaderComponent } from './resume-uploader/resume-uploader.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './timesheet/dashboard/dashboard.component';
+import { LogComponentComponent } from './log-component/log-component.component';
 ​
 const routes: Routes = [
   { path: "", redirectTo: '/login', pathMatch: 'full' },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: "updateInterviewDetails", component: UpdateInterviewDetailsComponent },
   { path: "file", component: ResumeUploaderComponent },
   { path:"timesheet-dashboard", component:DashboardComponent },
+  { path:"log", component:LogComponentComponent },
   
 ​
 ];

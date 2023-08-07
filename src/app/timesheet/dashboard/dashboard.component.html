@@ -1,8 +1,5 @@
 <div class="main-div card container">
     <div class="card-body">
-        <!-- <h5 class="card-title"
-            style="color: white; border: 1px solid whitesmoke; width: max-content; border-radius: 10px; padding: 10px;">
-            Timesheet - Dashboard </h5> -->
 
         <form [formGroup]="saveForm" (ngSubmit)="save()">
             <div style="position: absolute; right: 2rem; top: 1rem;">
@@ -17,6 +14,7 @@
                         <thead>
                             <th style="width: 12rem;">Project Name</th>
                             <th style="width: 12rem;">Task Name</th>
+                            <!-- <input style="width: 12rem;" type="date" ng-model="example.value" required> -->
                             <!-- <th *ngFor="let day of daysOfWeek">{{day}}</th> -->
                             <th style="width: 4rem;">{{daysOfWeek[0]}}</th>
                             <th style="width: 4rem;">{{daysOfWeek[1]}}</th>
@@ -78,7 +76,6 @@
                                                         style="width: 4rem;" type="number">
                                                 </td>
                                             </div>
-
                                         </div>
 
                                         <td><input class="form-control" formControlName="totalHours"

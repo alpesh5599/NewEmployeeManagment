@@ -1,0 +1,12 @@
+<div class="main-div container">
+    <table class="table table-borderless">
+        <tbody>
+            <tr>
+                <td *ngFor="let date of weekDates">{{ date }} </td>
+            </tr>
+            <tr>
+                <input class="form-control" formControlName="hours" style="width: 4rem;" type="number">
+            </tr>
+        </tbody>
+    </table>
+</div>
